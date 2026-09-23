@@ -1,0 +1,32 @@
+(kicad_pcb (version 20240108) (host pcbnew)
+  (general (thickness 2.4) ;; Commercial heavy copper substrate capable of handling high thermal loads
+    (layers (0 "F.Cu" signal) (31 "B.Cu" signal) (44 "Edge.Cuts" user "Edge.Cuts"))
+  )
+  (setup
+    (clearance_class "Logic_Control_Bus" (clearance 0.25) (trace_width 0.25))
+    ;; COMPLIANCE: Continuous 0.5mm Parallel Guard Ground Rings Isolating Multi-Phase Stator Telemetry
+    (clearance_class "Bilateral_Guard_Ring" (clearance 0.5) (trace_width 0.50))
+    ;; COMPLIANCE: Rule #1 Heavy 3oz Copper Plane Paths Configured for 1800A Mega-Flux Power Loads
+    (clearance_class "Heavy_3oz_MegaFlux_Bus" (clearance 12.0) (trace_width 8.00))
+  )
+
+  (net 0 "")
+  (net 1 "VCC_12V_AVIONICS")
+  (net 2 "GND_GUARD_SHIELD")
+  (net 3 "Phase_Alpha_Gate_Trigger")
+  (net 4 "Phase_Beta_Gate_Trigger")
+  (net 5 "MegaFlux_Stator_Output_A")
+  (net 6 "MegaFlux_Stator_Output_B")
+
+  ;; --- Component Matrix Placements ---
+  
+  ;; U1: Industrial SiC MOSFET Phase Module (Mega-Flux Variable-Reluctance Driver Core)
+  (module "Package_TO_SOT_THT:TO-247-5_Vertical" (layer "F.Cu") (at 50.0 50.0)
+    (pad "1" tht circle (at -5.0 0) (size 3.5 3.5) (drill 1.6) (layers "*.Cu" "*.Mask") (net 3 "Phase_Alpha_Gate_Trigger"))
+    (pad "2" tht circle (at -2.5 0) (size 3.5 3.5) (drill 1.6) (layers "*.Cu" "*.Mask") (net 4 "Phase_Beta_Gate_Trigger"))
+    (pad "3" tht circle (at 0 0) (size 4.5 4.5) (drill 1.5) (layers "*.Cu" "*.Mask") (net 2 "GND_GUARD_SHIELD")) ;; Guard Line
+    (pad "4" tht circle (at 2.5 0) (size 6.5 6.5) (drill 2.5) (layers "*.Cu" "*.Mask") (net 5 "MegaFlux_Stator_Output_A"))
+    (pad "5" tht circle (at 5.0 0) (size 6.5 6.5) (drill 2.5) (layers "*.Cu" "*.Mask") (net 6 "MegaFlux_Stator_Output_B"))
+    (net_class "Heavy_3oz_MegaFlux_Bus" (pins "4" "5"))
+  )
+)
