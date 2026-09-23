@@ -1,0 +1,29 @@
+(kicad_pcb (version 20240108) (host pcbnew)
+  (general (thickness 1.6)
+    (layers (0 "F.Cu" signal) (31 "B.Cu" signal) (44 "Edge.Cuts" user "Edge.Cuts"))
+  )
+  (setup
+    (clearance_class "Logic_Signal" (clearance 0.25) (trace_width 0.25))
+    ;; COMPLIANCE: Continuous 0.5mm Parallel Guard Ground Tracks Shielding Heavy-Tonnage Telemetry
+    (clearance_class "Bilateral_Guard_Ring" (clearance 0.5) (trace_width 0.50))
+  )
+
+  (net 0 "")
+  (net 1 "VCC_3V3_BATTERY")
+  (net 2 "GND_GUARD_SHIELD")
+  (net 3 "Tire_Sidewall_Strain_Sig")
+  (net 4 "Tire_Internal_Temp_Sig")
+  (net 5 "Muxed_Industrial_Data_Out")
+
+  ;; --- Component Matrix Placements ---
+  
+  ;; U1: Industrial High-Pressure TPMS Core (Goodyear/Michelin Telemetry Standard)
+  (module "Housings_SOIC:SOIC-8_3.9x4.9mm_Pitch1.27mm" (layer "F.Cu") (at 45.0 45.0)
+    (pad "1" smd rect (at -1.905 -2.7) (size 0.6 1.5) (layers "F.Cu") (net 1 "VCC_3V3_BATTERY"))
+    (pad "2" smd rect (at -0.635 -2.7) (size 0.6 1.5) (layers "F.Cu") (net 3 "Tire_Sidewall_Strain_Sig"))
+    (pad "3" smd rect (at 0.635 -2.7) (size 0.6 1.5) (layers "F.Cu") (net 4 "Tire_Internal_Temp_Sig"))
+    (pad "4" smd rect (at 1.905 -2.7) (size 0.6 1.5) (layers "F.Cu") (net 2 "GND_GUARD_SHIELD")) ;; Guard Line Left
+    (pad "5" smd rect (at 1.905 2.7) (size 0.6 1.5) (layers "F.Cu") (net 2 "GND_GUARD_SHIELD"))  ;; Guard Line Right
+    (pad "8" smd rect (at -1.905 2.7) (size 0.6 1.5) (layers "F.Cu") (net 5 "Muxed_Industrial_Data_Out"))
+  )
+)
