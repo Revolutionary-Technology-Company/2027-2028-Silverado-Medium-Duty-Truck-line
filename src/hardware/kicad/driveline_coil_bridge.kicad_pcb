@@ -1,0 +1,32 @@
+(kicad_pcb (version 20240108) (host pcbnew)
+  (general (thickness 2.4) ;; Commercial heavy copper double-sided board stack
+    (layers (0 "F.Cu" signal) (31 "B.Cu" signal) (44 "Edge.Cuts" user "Edge.Cuts"))
+  )
+  (setup
+    (clearance_class "Logic_Control_Bus" (clearance 0.25) (trace_width 0.25))
+    ;; COMPLIANCE: Continuous 0.5mm Parallel Guard Ground Tracks Shielding Torsional Sensor Telemetry
+    (clearance_class "Bilateral_Guard_Ring" (clearance 0.5) (trace_width 0.50))
+    ;; COMPLIANCE: Rule #1 Thick 3oz Copper Trace Width Parameters for High-Amperage Magnetic Drive
+    (clearance_class "Heavy_3oz_Driveline_Bus" (clearance 8.0) (trace_width 5.50))
+  )
+
+  (net 0 "")
+  (net 1 "VCC_12V_AVIONICS")
+  (net 2 "GND_GUARD_SHIELD")
+  (net 3 "Active_Shaft_Phase_A_PWM")
+  (net 4 "Active_Shaft_Phase_B_PWM")
+  (net 5 "Magnetic_Tunnel_Coil_Drive_H")
+  (net 6 "Magnetic_Tunnel_Coil_Drive_L")
+
+  ;; --- Component Matrix Placements ---
+  
+  ;; U1: High-Power Inverter Gate Driver Array (Active Torsional Variable-Reluctance Bridge)
+  (module "Package_TO_SOT_THT:TO-247-5_Vertical" (layer "F.Cu") (at 45.0 50.0)
+    (pad "1" tht circle (at -5.0 0) (size 3.5 3.5) (drill 1.6) (layers "*.Cu" "*.Mask") (net 3 "Active_Shaft_Phase_A_PWM"))
+    (pad "2" tht circle (at -2.5 0) (size 3.5 3.5) (drill 1.6) (layers "*.Cu" "*.Mask") (net 4 "Active_Shaft_Phase_B_PWM"))
+    (pad "3" tht circle (at 0 0) (size 4.5 4.5) (drill 1.5) (layers "*.Cu" "*.Mask") (net 2 "GND_GUARD_SHIELD")) ;; Guard Reference
+    (pad "4" tht circle (at 2.5 0) (size 5.5 5.5) (drill 2.0) (layers "*.Cu" "*.Mask") (net 5 "Magnetic_Tunnel_Coil_Drive_H"))
+    (pad "5" tht circle (at 5.0 0) (size 5.5 5.5) (drill 2.0) (layers "*.Cu" "*.Mask") (net 6 "Magnetic_Tunnel_Coil_Drive_L"))
+    (net_class "Heavy_3oz_Driveline_Bus" (pins "4" "5"))
+  )
+)
