@@ -1,0 +1,29 @@
+(kicad_pcb (version 20240108) (host pcbnew)
+  (general (thickness 1.6)
+    (layers (0 "F.Cu" signal) (31 "B.Cu" signal) (44 "Edge.Cuts" user "Edge.Cuts"))
+  )
+  (setup
+    (clearance_class "Logic_Control" (clearance 0.25) (trace_width 0.25))
+    ;; COMPLIANCE: Continuous 0.5mm Parallel Guard Ground Tracks Shielding Commercial Scupper Sensors
+    (clearance_class "Bilateral_Guard_Ring" (clearance 0.5) (trace_width 0.50))
+  )
+
+  (net 0 "")
+  (net 1 "VCC_5V_ISO")
+  (net 2 "GND_GUARD_SHIELD")
+  (net 3 "Front_Scupper_Vapor_Sig")
+  (net 4 "Rear_Scupper_Vapor_Sig")
+  (net 5 "Muxed_Fleet_Vapor_Out")
+
+  ;; --- Component Matrix Placements ---
+  
+  ;; U1: Advanced Impedance Moisture Auditor (Northrop Grumman Aerospace Telemetry Base)
+  (module "Housings_SOIC:SOIC-8_3.9x4.9mm_Pitch1.27mm" (layer "F.Cu") (at 50.0 50.0)
+    (pad "1" smd rect (at -1.905 -2.7) (size 0.6 1.5) (layers "F.Cu") (net 1 "VCC_5V_ISO"))
+    (pad "2" smd rect (at -0.635 -2.7) (size 0.6 1.5) (layers "F.Cu") (net 3 "Front_Scupper_Vapor_Sig"))
+    (pad "3" smd rect (at 0.635 -2.7) (size 0.6 1.5) (layers "F.Cu") (net 4 "Rear_Scupper_Vapor_Sig"))
+    (pad "4" smd rect (at 1.905 -2.7) (size 0.6 1.5) (layers "F.Cu") (net 2 "GND_GUARD_SHIELD")) ;; Guard Track Left
+    (pad "5" smd rect (at 1.905 2.7) (size 0.6 1.5) (layers "F.Cu") (net 2 "GND_GUARD_SHIELD"))  ;; Guard Track Right
+    (pad "8" smd rect (at -1.905 2.7) (size 0.6 1.5) (layers "F.Cu") (net 5 "Muxed_Fleet_Vapor_Out"))
+  )
+)
