@@ -1,0 +1,32 @@
+====================================================================================
+REVOLUTIONARY TECHNOLOGY COMPANY & UNIVERSITY OF WASHINGTON DEPARTMENT OF PHYSICS
+Subsystem: fleet_cockpit_harness.txt (Post-Body Cockpit 12V Avionics Pinout Matrix)
+Core Objective: Low-Voltage Data and Signal Pin Landings for Multi-Industry Fleet Trims
+Compliance: Rule #2 (Bilateral 0.5mm Parallel Guard Ground Shielding Rings)
+====================================================================================
+
+[TERMINAL BLOCK J1: MOTORIZED CO-PILOT GLOVE BOX WORKSTATION WORKSPACE]
+* Pin 1  [12V_AVIONICS_IN]   <--> Supplies raw battery source lines to slider panel
+* Pin 2  [UPFIT_BUS_DATA]    <--> Encoded 16-state control logic for 10 modular beds [INDEX]
+* Pin 3  [STROBE_RELAY_GATE] <--> Triggers tactical flashing warning arrays [INDEX]
+* Pin 4  [GND_GUARD_SHIELD]  <--> Rule #2 Ground loop barrier shielding console traces [INDEX]
+
+[TERMINAL BLOCK J2: DUAL-CHANNEL HIGH-ACCURACY PEDAL ENCODER INFRASTRUCTURE]
+* Pin 1  [5V_ISO_REGULATED]  <--> Constant isolated source to magnetic Hall sensors [INDEX]
+* Pin 2  [THROTTLE_CHAN_A]   <--> Primary accelerator path depth indicator voltage [INDEX]
+* Pin 3  [THROTTLE_CHAN_B]   <--> Secondary accelerator path cross-check voltage [INDEX]
+* Pin 4  [GND_GUARD_SHIELD]  <--> Continuous ground track wrapping pedal data traces [INDEX]
+
+[TERMINAL BLOCK J3: HIGH-FRAME-RATE STEERING COLUMN BIOMETRIC CAMERA HINGE]
+* Pin 1  [3V3_ISO_REGULATED] <--> Powers center-wheel infrared camera matrix [INDEX]
+* Pin 2  [IRIS_MIPI_DATA_P]  <--> High-speed differential eye-tracking lane (Positive) [INDEX]
+* Pin 3  [IRIS_MIPI_DATA_N]  <--> High-speed differential eye-tracking lane (Negative) [INDEX]
+* Pin 4  [GND_GUARD_SHIELD]  <--> Unbroken guard shield eliminating 800V inverter EMI [INDEX]
+
+[TERMINAL BLOCK J4: ACTIVE AIR-HYDRAULIC LEVELING VALVE SOLENOID STRUTS]
+* Pin 1  [12V_PUMP_ACTUATE]  <--> High-current supply path to air compressor relays [INDEX]
+* Pin 2  [VALVE_INFLATE_SIG] <--> Commands hydraulic leveling rams to compensate bed load [INDEX]
+* Pin 3  [VALVE_DEFLATE_SIG] <--> Commands hydraulic leveling rams to exhaust fluid pressure [INDEX]
+* Pin 4  [GND_GUARD_SHIELD]  <--> Heavy isolation shield preventing signal feedback loops [INDEX]
+
+====================================================================================
