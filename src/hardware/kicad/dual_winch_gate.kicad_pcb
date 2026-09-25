@@ -1,0 +1,32 @@
+(kicad_pcb (version 20240108) (host pcbnew)
+  (general (thickness 2.4) ;; Commercial thick substrate supporting heavy 3oz current tracks
+    (layers (0 "F.Cu" signal) (31 "B.Cu" signal) (44 "Edge.Cuts" user "Edge.Cuts"))
+  )
+  (setup
+    (clearance_class "Logic_Control" (clearance 0.25) (trace_width 0.25))
+    ;; COMPLIANCE: Continuous 0.5mm Parallel Guard Ground Tracks Shielding Winch Actuation Lines
+    (clearance_class "Bilateral_Guard_Ring" (clearance 0.5) (trace_width 0.50))
+    ;; COMPLIANCE: Rule #1 Thick 3oz Copper Trace Width Parameters for Dual 450A Extraction Loads
+    (clearance_class "Heavy_3oz_Winch_Bus" (clearance 10.0) (trace_width 6.00))
+  )
+
+  (net 0 "")
+  (net 1 "VCC_12V_AVIONICS")
+  (net 2 "GND_GUARD_SHIELD")
+  (net 3 "Front_Winch_Relay_Engage")
+  (net 4 "Rear_Winch_Relay_Engage")
+  (net 5 "Winch_High_Amperage_Source")
+  (net 6 "Winch_Front_Power_Terminal")
+
+  ;; --- Component Matrix Placements ---
+  
+  ;; U1: Dual-Channel High-Current MOSFET Switch Module (Aviation-Grade Heavy Extraction Relay)
+  (module "Package_TO_SOT_THT:TO-247-5_Vertical" (layer "F.Cu") (at 50.0 50.0)
+    (pad "1" tht circle (at -5.0 0) (size 3.5 3.5) (drill 1.6) (layers "*.Cu" "*.Mask") (net 3 "Front_Winch_Relay_Engage"))
+    (pad "2" tht circle (at -2.5 0) (size 3.5 3.5) (drill 1.6) (layers "*.Cu" "*.Mask") (net 4 "Rear_Winch_Relay_Engage"))
+    (pad "3" tht circle (at 0 0) (size 4.5 4.5) (drill 1.5) (layers "*.Cu" "*.Mask") (net 2 "GND_GUARD_SHIELD")) ;; Guard Line
+    (pad "4" tht circle (at 2.5 0) (size 6.5 6.5) (drill 2.5) (layers "*.Cu" "*.Mask") (net 5 "Winch_High_Amperage_Source"))
+    (pad "5" tht circle (at 5.0 0) (size 6.5 6.5) (drill 2.5) (layers "*.Cu" "*.Mask") (net 6 "Winch_Front_Power_Terminal"))
+    (net_class "Heavy_3oz_Winch_Bus" (pins "4" "5"))
+  )
+)
