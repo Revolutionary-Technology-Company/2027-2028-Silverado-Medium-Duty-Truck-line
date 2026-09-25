@@ -1,0 +1,36 @@
+(kicad_pcb (version 20240108) (host pcbnew)
+  (general (thickness 1.6)
+    (layers (0 "F.Cu" signal) (31 "B.Cu" signal) (44 "Edge.Cuts" user "Edge.Cuts"))
+  )
+  (setup
+    (clearance_class "Logic_Signal" (clearance 0.25) (trace_width 0.25))
+    ;; COMPLIANCE: Continuous Parallel 0.5mm Guard Ground Rings Shielding Fleet Upfit Identification Lines
+    (clearance_class "Bilateral_Guard_Ring" (clearance 0.5) (trace_width 0.50))
+  )
+
+  (net 0 "")
+  (net 1 "VCC_5V_ISO")
+  (net 2 "GND_GUARD_SHIELD")
+  (net 3 "Sense_Tow_Truck")
+  (net 4 "Sense_Utility_Body")
+  (net 5 "Sense_EMT_Ambulance")
+  (net 6 "Sense_Fire_Pumper")
+  (net 7 "Sense_Dump_Truck")
+  (net 8 "Sense_Military_Cargo")
+  (net 9 "Encoded_Fleet_Output_Bus")
+
+  ;; --- Component Placements ---
+  
+  ;; U1: Active Fleet Upfit Multiplexer Selector Matrix (CD74HC4067 Series Array)
+  (module "Housings_SOIC:SOIC-24_7.5x15.4mm_Pitch1.27mm" (layer "F.Cu") (at 50.0 50.0)
+    (pad "1" smd rect (at -5.715 -4.3) (size 0.6 1.5) (layers "F.Cu") (net 3 "Sense_Tow_Truck"))
+    (pad "2" smd rect (at -4.445 -4.3) (size 0.6 1.5) (layers "F.Cu") (net 4 "Sense_Utility_Body"))
+    (pad "3" smd rect (at -3.175 -4.3) (size 0.6 1.5) (layers "F.Cu") (net 5 "Sense_EMT_Ambulance"))
+    (pad "4" smd rect (at -1.905 -4.3) (size 0.6 1.5) (layers "F.Cu") (net 6 "Sense_Fire_Pumper"))
+    (pad "5" smd rect (at -0.635 -4.3) (size 0.6 1.5) (layers "F.Cu") (net 2 "GND_GUARD_SHIELD")) ;; Guard Track Left
+    (pad "6" smd rect (at 0.635 -4.3) (size 0.6 1.5) (layers "F.Cu") (net 2 "GND_GUARD_SHIELD"))  ;; Guard Track Right
+    (pad "19" smd rect (at 3.175 4.3) (size 0.6 1.5) (layers "F.Cu") (net 7 "Sense_Dump_Truck"))
+    (pad "20" smd rect (at 4.445 4.3) (size 0.6 1.5) (layers "F.Cu") (net 8 "Sense_Military_Cargo"))
+    (pad "24" smd rect (at 5.715 4.3) (size 0.6 1.5) (layers "F.Cu") (net 9 "Encoded_Fleet_Output_Bus"))
+  )
+)
