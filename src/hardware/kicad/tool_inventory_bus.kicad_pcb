@@ -1,0 +1,31 @@
+(kicad_pcb (version 20240108) (host pcbnew)
+  (general (thickness 1.6)
+    (layers (0 "F.Cu" signal) (31 "B.Cu" signal) (44 "Edge.Cuts" user "Edge.Cuts"))
+  )
+  (setup
+    (clearance_class "Logic_Control" (clearance 0.25) (trace_width 0.25))
+    ;; COMPLIANCE: Continuous 0.5mm Parallel Guard Ground Tracks Shielding Tool Inventory Continuity Loops
+    (clearance_class "Bilateral_Guard_Ring" (clearance 0.5) (trace_width 0.50))
+  )
+
+  (net 0 "")
+  (net 1 "VCC_5V_ISO")
+  (net 2 "GND_GUARD_SHIELD")
+  (net 3 "Bottle_Jack_Stowage_Sig")
+  (net 4 "HV_Tool_Roll_Stowage_Sig")
+  (net 5 "Impact_Gun_Stowage_Sig")
+  (net 6 "Muxed_Inventory_Bus_Out")
+
+  ;; --- Component Matrix Placements ---
+  
+  ;; U1: Fleet Inventory Verification Gate Controller (GM Custom Safe-Stowage Core)
+  (module "Housings_SOIC:SOIC-16_3.9x9.9mm_Pitch1.27mm" (layer "F.Cu") (at 45.0 50.0)
+    (pad "1" smd rect (at -4.445 -2.7) (size 0.6 1.5) (layers "F.Cu") (net 1 "VCC_5V_ISO"))
+    (pad "2" smd rect (at -3.175 -2.7) (size 0.6 1.5) (layers "F.Cu") (net 3 "Bottle_Jack_Stowage_Sig"))
+    (pad "3" smd rect (at -1.905 -2.7) (size 0.6 1.5) (layers "F.Cu") (net 4 "HV_Tool_Roll_Stowage_Sig"))
+    (pad "4" smd rect (at -0.635 -2.7) (size 0.6 1.5) (layers "F.Cu") (net 5 "Impact_Gun_Stowage_Sig"))
+    (pad "5" smd rect (at 0.635 -2.7) (size 0.6 1.5) (layers "F.Cu") (net 2 "GND_GUARD_SHIELD")) ;; Guard Track Left
+    (pad "6" smd rect (at 1.905 -2.7) (size 0.6 1.5) (layers "F.Cu") (net 2 "GND_GUARD_SHIELD"))  ;; Guard Track Right
+    (pad "16" smd rect (at 4.445 2.7) (size 0.6 1.5) (layers "F.Cu") (net 6 "Muxed_Inventory_Bus_Out"))
+  )
+)
